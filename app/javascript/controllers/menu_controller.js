@@ -1,14 +1,14 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="menu"
 export default class extends Controller {
-  static targets = ['menu', 'item', 'items']
+  static targets = ['menu', 'item', 'items'];
   connect() {
-    this.menu = []
-  }
+    this.menu = [];
+  };
 
   newItem(e) {
-    e.preventDefault()
+    e.preventDefault();
     console.log('test');
     this.itemsTarget.insertAdjacentHTML('beforeend', `  <div class="item-group" data-menu-target='item'>
     <div class='w-100'>
@@ -19,31 +19,30 @@ export default class extends Controller {
       <label for="price" class='form-label m-1'>Item Price (£):</label>
       <input class='form-control m-1' type="text" name='price' data-action='change->menu#processItems'>
     </div>
-  </div>`)
-  }
+  </div>`);
+  };
 
   processItems() {
-    console.log(this.itemTargets);
-    this.menu = []
+    this.menu = [];
     this.itemTargets.forEach(element => {
-      const inputs = element.querySelectorAll('input')
+      const inputs = element.querySelectorAll('input');
       if (inputs[0].value.length > 0 && inputs[1].value.length) {
         const solution = (num) => {
           if (num.split('.')[1] && num.split('.')[1].length >= 2) {
-            return num
+            return num;
           } else if (num.split('.')[1]) {
-            return `${num}0`
+            return `${num}0`;
           } else {
-            return `${num}.00`
-          }
-        }
-        this.menu.push(`{"name": "${inputs[0].value}", "price": "£${inputs[1].value}"}`)
-      }
+            return `${num}.00`;
+          };
+        };
+        this.menu.push(`{"name": "${inputs[0].value}", "price": "£${inputs[1].value}"}`);
+      };
     });
-    this.updateMenu()
-  }
+    this.updateMenu();
+  };
 
   updateMenu() {
-    this.menuTarget.value = `[${this.menu.join(',')}]`
-  }
-}
+    this.menuTarget.value = `[${this.menu.join(',')}]`;
+  };
+};

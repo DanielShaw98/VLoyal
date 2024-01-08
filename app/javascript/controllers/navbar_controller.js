@@ -1,12 +1,12 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="navbar"
 export default class extends Controller {
-  static targets = ['menu']
+  static targets = ['menu'];
 
   connect() {
-    this.open = false
-  }
+    this.open = false;
+  };
 
   toggleMenu() {
     if (this.open) {
@@ -19,7 +19,7 @@ export default class extends Controller {
       setTimeout(() => {
         this.menuTarget.classList.add('open');
       }, 10);
-    }
-    this.open = !this.open
-  }
-}
+    };
+    this.open = !this.open;
+  };
+};
