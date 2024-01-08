@@ -8,16 +8,7 @@ class Reward < ApplicationRecord
     # Get the host
     host = 'https://vloyal-9cfecae07662.herokuapp.com/'
     reward_id = self.id
-    p "#{host}/rewards/#{reward_id}"
-    # Create the QRCode object
-    # qrcode = RQRCode::QRCode.new("http://#{host}/posts/#{id}")
-    # qrcode = RQRCode::QRCode.new(post_url(self, host:))
     qrcode = RQRCode::QRCode.new("#{host}/rewards/#{reward_id}")
-    # this qr code is for the business side, and this should show that this customer deserve a free #{stuff}
-    # set reward.claimed = true
-    # prompt to the user that he just received the free stuff ?? idk if it's ok
-    # post has to have user_is and brand_id (card_id ?)
-
     # Create the PNG object
     png = qrcode.as_png(
         bit_depth: 1,
@@ -32,7 +23,6 @@ class Reward < ApplicationRecord
         size: 120,
         offset: 0
       )
-
     self.qrcode.attach(
         io: StringIO.new(png.to_s),
         filename: "qrcode.png",

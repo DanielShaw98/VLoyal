@@ -367,15 +367,15 @@ legacy_cafe = {
 
 images << { file: URI.open('https://charlieontravel.com/wp-content/uploads/2019/08/Flour-Pot-Bakery-Best-Coffee-Shops-Brighton-570x410.jpg'), filename: 'legacy.jpg' }
 
-card_styles = [{theme: 'Gold' , url: 'https://static.wikia.nocookie.net/disney/images/b/bf/Mickey_Mouse_Disney_1.png/revision/latest/thumbnail/width/360/height/360?cb=20180813011713', local: 'card-themes/gold-card.png'},
-{theme: 'Red' , url: 'https://static.wikia.nocookie.net/disney/images/b/bf/Mickey_Mouse_Disney_1.png/revision/latest/thumbnail/width/360/height/360?cb=20180813011713', local: 'card-themes/red-card.png'},
-{theme: 'Sky-blue' , url: 'https://static.wikia.nocookie.net/disney/images/b/bf/Mickey_Mouse_Disney_1.png/revision/latest/thumbnail/width/360/height/360?cb=20180813011713', local: 'card-themes/sky-blue-card.png'},
-{theme: 'Grass' , url: 'https://static.wikia.nocookie.net/disney/images/b/bf/Mickey_Mouse_Disney_1.png/revision/latest/thumbnail/width/360/height/360?cb=20180813011713', local: 'card-themes/grass-card.png'},
-{theme: 'Navy-blue' , url: 'https://static.wikia.nocookie.net/disney/images/b/bf/Mickey_Mouse_Disney_1.png/revision/latest/thumbnail/width/360/height/360?cb=20180813011713', local: 'card-themes/navy-blue-card.png'},
-{theme: 'Purple' , url: 'https://static.wikia.nocookie.net/disney/images/b/bf/Mickey_Mouse_Disney_1.png/revision/latest/thumbnail/width/360/height/360?cb=20180813011713', local: 'card-themes/purple-card.png'},
-{theme: 'Silver' , url: 'https://static.wikia.nocookie.net/disney/images/b/bf/Mickey_Mouse_Disney_1.png/revision/latest/thumbnail/width/360/height/360?cb=20180813011713', local: 'card-themes/silver-card.png'},
-{theme: 'Space-grey' , url: 'https://static.wikia.nocookie.net/disney/images/b/bf/Mickey_Mouse_Disney_1.png/revision/latest/thumbnail/width/360/height/360?cb=20180813011713', local: 'card-themes/space-grey-card.png'},
-{theme: 'Coral' , url: 'https://static.wikia.nocookie.net/disney/images/b/bf/Mickey_Mouse_Disney_1.png/revision/latest/thumbnail/width/360/height/360?cb=20180813011713', local: 'card-themes/coral-card.png'}]
+card_styles = [{theme: 'Gold', url: 'https://static.wikia.nocookie.net/disney/images/b/bf/Mickey_Mouse_Disney_1.png/revision/latest/thumbnail/width/360/height/360?cb=20180813011713', local: 'card-themes/gold-card.png'},
+{theme: 'Red', url: 'https://static.wikia.nocookie.net/disney/images/b/bf/Mickey_Mouse_Disney_1.png/revision/latest/thumbnail/width/360/height/360?cb=20180813011713', local: 'card-themes/red-card.png'},
+{theme: 'Sky-blue', url: 'https://static.wikia.nocookie.net/disney/images/b/bf/Mickey_Mouse_Disney_1.png/revision/latest/thumbnail/width/360/height/360?cb=20180813011713', local: 'card-themes/sky-blue-card.png'},
+{theme: 'Grass', url: 'https://static.wikia.nocookie.net/disney/images/b/bf/Mickey_Mouse_Disney_1.png/revision/latest/thumbnail/width/360/height/360?cb=20180813011713', local: 'card-themes/grass-card.png'},
+{theme: 'Navy-blue', url: 'https://static.wikia.nocookie.net/disney/images/b/bf/Mickey_Mouse_Disney_1.png/revision/latest/thumbnail/width/360/height/360?cb=20180813011713', local: 'card-themes/navy-blue-card.png'},
+{theme: 'Purple', url: 'https://static.wikia.nocookie.net/disney/images/b/bf/Mickey_Mouse_Disney_1.png/revision/latest/thumbnail/width/360/height/360?cb=20180813011713', local: 'card-themes/purple-card.png'},
+{theme: 'Silver', url: 'https://static.wikia.nocookie.net/disney/images/b/bf/Mickey_Mouse_Disney_1.png/revision/latest/thumbnail/width/360/height/360?cb=20180813011713', local: 'card-themes/silver-card.png'},
+{theme: 'Space-grey', url: 'https://static.wikia.nocookie.net/disney/images/b/bf/Mickey_Mouse_Disney_1.png/revision/latest/thumbnail/width/360/height/360?cb=20180813011713', local: 'card-themes/space-grey-card.png'},
+{theme: 'Coral', url: 'https://static.wikia.nocookie.net/disney/images/b/bf/Mickey_Mouse_Disney_1.png/revision/latest/thumbnail/width/360/height/360?cb=20180813011713', local: 'card-themes/coral-card.png'}]
 
 [tokito_hair, thirty_saloon, nando_sandwich_bar, artist_cafe_london, nutmeg_n_koffee, coffee_and_cates, fabrique, rise_and_bloom, legacy_cafe].each_with_index do |attributes, index|
   brand = Brand.new(attributes)
@@ -394,6 +394,7 @@ card_styles = [{theme: 'Gold' , url: 'https://static.wikia.nocookie.net/disney/i
   card_style.save
   puts "Created #{card_style}"
 end
+
 # Locations
 
 puts "Creating locations..."
@@ -423,6 +424,7 @@ mark = { first_name: "Mark", last_name: "O'Connor", email: "mark@lewagon.com", p
 miriam = { first_name: "Miriam", last_name: "Ciurea", email: "miriam@lewagon.com", password: "123456", business: false }
 
 # Cards & Rewards
+
 tokito_hair_card = { brand_id: Brand.find_by(name: "Tokito Hair").id, stamps: 6 }
 thirty_saloon_card = { brand_id: Brand.find_by(name: "3thirty Salon").id, stamps: 4 }
 artist_cafe_london_card = { brand_id: Brand.find_by(name: "Artist Cafe London").id, stamps: 7 }
@@ -441,21 +443,13 @@ legacy_card = { brand_id: Brand.find_by(name: "Legacy Cafe").id, stamps: 0 }
     card = Card.new(card_attributes)
     card.user = user
     card.save!
-    # puts "Created #{card.id}"
-    # puts "Creating rewards..."
-    # reward = Reward.create!(card: Card.find_by(id: 1), claimed: false)
-    # reward = Reward.create!(card: Card.find_by(3))
-    # reward.generate_qrcode
-    # puts "Created #{reward.id}"
   end
 end
 
 puts "Creating rewards..."
 reward1 = Reward.create!(card: Card.find_by(id: 37), claimed: false)
 reward2 = Reward.create!(card: Card.find_by(id: 39), claimed: false)
-# reward = Reward.create!(card: Card.find_by(3))
 reward1.generate_qrcode
 reward2.generate_qrcode
-# puts "Created #{reward.id}"
 
 puts "Finished!"

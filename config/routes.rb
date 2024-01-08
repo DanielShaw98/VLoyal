@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => {:registrations => "registrations"}
+  devise_for :users, :controllers => { :registrations => "registrations" }
   root to: "cards#index"
   get 'basic-qr-code-reader', to: 'basic_qr_codes#index'
   get 'diagnostics', to: 'pages#diagnostics'
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :brands, only: [:new]
   end
-  resources :brands, only: [:index, :show, :create, :update, :edit] do
+  resources :brands, only: %i[index show create update edit] do
     patch :increment, on: :member
     resources :locations, only: [:create]
     collection do
@@ -22,12 +22,8 @@ Rails.application.routes.draw do
 
   post "set_user_location", to: "brands#set_user_location"
   get "get_user_location", to: "brands#get_user_location"
-  resources :cards, only: [:index, :destroy]
+  resources :cards, only: %i[index destroy]
   resources :rewards, only: [:index] do
     patch :claim, on: :member
   end
-  # patch "rewards/:id", to: "rewards#claim", as: :claim_reward
-
-  # Defines the root path route ("/")
-  # root "posts#index"
 end

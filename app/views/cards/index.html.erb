@@ -1,5 +1,4 @@
 <div class="card-index-body" data-controller='card' data-action='click->card#reset'>
-
   <div class="logo-and-wallet rewards-heading">
     <h2 class="page-title">My Wallet</h2>
     <%=  image_tag 'under-txt-logo.png', alt: "under-text-v", class: "under-txt-logo"%>
@@ -16,62 +15,56 @@
     </div>
 
   <% else %>
-    <%# <% @categories.each do |name, cards| %>
-      <p class="loyalty-reward-categories"></p>
-      <%# <%= name.capitalize %>
+    <p class="loyalty-reward-categories"></p>
+    <div class="loyalty-cards-container">
+      <% @cards.each do |card| %>
+      <div class="loyalty-card" data-card-target='card' data-action='click->card#flipCard'>
+        <div class="loyalty-card-inner">
 
-      <div class="loyalty-cards-container">
+          <div class="loyalty-card-front  <%= card.brand.card_styles[0].theme.downcase %>" id="<%= 'one-left' if card.stamps == 7 %>" style="background-image: url('<%= cl_image_path card.brand.card_styles[0].background.key %>'); background-size: cover;" >
 
-        <% @cards.each do |card| %>
-        <div class="loyalty-card" data-card-target='card' data-action='click->card#flipCard'>
-          <div class="loyalty-card-inner">
-
-            <div class="loyalty-card-front  <%= card.brand.card_styles[0].theme.downcase %>" id="<%= 'one-left' if card.stamps == 7 %>" style="background-image: url('<%= cl_image_path card.brand.card_styles[0].background.key %>'); background-size: cover;" >
-
-              <div class="brand-name">
-                <div class="card-front-logo-circle">
-                 <%= image_tag card.brand.category.file_name, class: "inner-logo" %>
-                </div>
-                <p><%= card.brand.name %></p>
+            <div class="brand-name">
+              <div class="card-front-logo-circle">
+                <%= image_tag card.brand.category.file_name, class: "inner-logo" %>
               </div>
-
-              <div class="user-date">
-                <h6 class="card-user-name"><%= card.user.first_name %> <%= card.user.last_name %></h6>
-                <h6 class="no-of-stamps"> <%= card.stamps %>/<%= card.card_styles[0].max_stamps %> </h6>
-              </div>
-
+              <p><%= card.brand.name %></p>
             </div>
 
-            <div class="loyalty-card-back <%= card.brand.card_styles[0].theme.downcase %>" id="<%= 'one-left' if card.stamps == 7 %>">
-
-               <div class="brand-name">
-                <div class="card-front-logo-circle">
-                 <%= image_tag card.brand.category.file_name, class: "inner-logo" %>
-                </div>
-                <p><%= card.brand.name %></p>
-              </div>
-
-              <% stamps = card.stamps %>
-              <div class="stamp-area">
-                <% card.card_styles[0].max_stamps.times do %>
-                  <% if stamps.positive? %>
-                    <div class="stamp stamped">
-                      <%= image_tag card.brand.category.file_name %>
-                    </div>
-                  <% else %>
-                    <div class="stamp">
-                      <%= image_tag 'bean.svg'%>
-                    </div>
-                  <% end %>
-                  <% stamps -= 1%>
-                <% end %>
-              </div>
-
+            <div class="user-date">
+              <h6 class="card-user-name"><%= card.user.first_name %> <%= card.user.last_name %></h6>
+              <h6 class="no-of-stamps"> <%= card.stamps %>/<%= card.card_styles[0].max_stamps %> </h6>
             </div>
           </div>
+
+          <div class="loyalty-card-back <%= card.brand.card_styles[0].theme.downcase %>" id="<%= 'one-left' if card.stamps == 7 %>">
+
+            <div class="brand-name">
+              <div class="card-front-logo-circle">
+                <%= image_tag card.brand.category.file_name, class: "inner-logo" %>
+              </div>
+              <p><%= card.brand.name %></p>
+            </div>
+
+            <% stamps = card.stamps %>
+            <div class="stamp-area">
+              <% card.card_styles[0].max_stamps.times do %>
+                <% if stamps.positive? %>
+                  <div class="stamp stamped">
+                    <%= image_tag card.brand.category.file_name %>
+                  </div>
+                <% else %>
+                  <div class="stamp">
+                    <%= image_tag 'bean.svg'%>
+                  </div>
+                <% end %>
+                <% stamps -= 1%>
+              <% end %>
+            </div>
+
+          </div>
         </div>
-        <% end %>
       </div>
-    <%# <% end %>
+      <% end %>
+    </div>
   <% end %>
 </div>
