@@ -39,7 +39,6 @@
   box-shadow: -2px -2px 4px 0px #00000014 inset;
 }
 
-// <%= card.brand.card_styles[0].theme.downcase %>
 .loyalty-card .loyalty-card-back.navy-blue {
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.05) 0%, rgba(255, 255, 255, 0.05) 100%),
   linear-gradient(0deg, #2d538b, #2d538b);
@@ -81,6 +80,7 @@
   box-shadow: 2px 2px 4px 0px #FFFFFF66 inset;
   box-shadow: -2px -2px 4px 0px #00000014 inset;
 }
+
 .loyalty-card .loyalty-card-back.coral {
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.05) 0%, rgba(255, 255, 255, 0.05) 100%),
   linear-gradient(0deg, #ff9e9e, #ff9e9e);

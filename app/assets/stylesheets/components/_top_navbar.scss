@@ -7,14 +7,11 @@ $nav-height: 86px;
   top: 0px;
   left: 0px;
   padding: 0 43px;
-  // padding-top: 32px;
-  // padding-bottom: 16px;
   height: 10vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: $vbody-color;
-
   .menu-toggle {
     border-radius: 50px;
     border: 2px solid rgba(0, 0, 0, 0.05);
@@ -31,7 +28,6 @@ $nav-height: 86px;
       color: #546E7A;
     }
   }
-
   .menu {
     position: absolute;
     border-radius: 20px;

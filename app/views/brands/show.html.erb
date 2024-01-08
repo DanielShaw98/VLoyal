@@ -40,7 +40,7 @@
 
         <% if @brand.category.name == "Sandwich Shop" %>
         <div >
-          <h1 class="menu-serevices">Menu</h1>
+          <h1 class="menu-services">Menu</h1>
         </div>
 
           <% JSON.parse(@brand.menu).each do |menu| %>
@@ -61,7 +61,7 @@
 
             <% elsif @brand.category.name == "Hairdresser" %>
               <div class="">
-                <h1 class="menu-serevices">Services</h1>
+                <h1 class="menu-services">Services</h1>
               </div>
               <% JSON.parse(@brand.menu).each do |menu| %>
                 <div class="container text-center">
@@ -81,7 +81,7 @@
 
             <% else %>
             <div >
-                <h1 class="menu-serevices">Menu</h1>
+                <h1 class="menu-services">Menu</h1>
              </div>
               <% JSON.parse(@brand.menu).each do |menu| %>
                 <div class="container text-center">

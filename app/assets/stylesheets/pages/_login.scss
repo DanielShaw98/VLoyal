@@ -9,7 +9,7 @@
   position: absolute;
   left: 50%;
   text-align: center;
-  top: 14%;
+  top: 126px;
   transform: translate(-50%, 0);
   text-shadow: 0px 4px 1.2999999523162842px rgba(0, 0, 0, 0.10);
 }
@@ -35,6 +35,9 @@
   margin-top: 25%;
   margin-bottom: 5%;
   box-shadow: 4px 4px 12px 0px rgba(187, 195, 206, 0.60), -4px -4px 12px 0px rgba(253, 255, 255, 0.80);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .signin-btn {
@@ -64,12 +67,12 @@
 
 .forgot-password-txt {
   font-size: 14px;
-
   a {
     text-decoration: none;
     color: #546E7A;
   }
 }
+
 .email-form {
   display: flex;
   width: 350px;
@@ -81,18 +84,14 @@
   background: linear-gradient(0deg, #F8FAFC 0%, #F8FAFC 100%), #CFD8DC;
   box-shadow: 4px 4px 12px 0px rgba(187, 195, 206, 0.60) inset, -4px -4px 12px 0px rgba(253, 255, 255, 0.80) inset;
   font-family: Lexend Giga;
-
   &::placeholder {
     color: #90A4AE;
     opacity: 50%;
   }
 }
-.form-check, .form-text {
+
+.form-check {
   margin-left: 10px;
   font-family: Lexend Giga;
   color: #546E7A;
-}
-
-.form-control {
-  margin: 23px auto;
 }

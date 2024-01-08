@@ -1,18 +1,16 @@
 // Import your components CSS files here.
+@import "address_autocomplete";
 @import "alert";
 @import "avatar";
-@import "form_legend_clear";
-@import 'brands';
-@import "login";
-@import "direction_button";
 @import "bottom_navbar";
-@import "signup";
+@import "card_flip";
+@import "card_style_themes";
+@import "direction_button";
+@import "form_legend_clear";
+@import "forms";
+@import "login_prompt";
 @import "map";
 @import "top_navbar";
-@import "login_prompt";
-@import "qr_scanner";
-@import "address_autocomplete";
-@import "forms";
 
 body {
   background-color: $vbody-color;
