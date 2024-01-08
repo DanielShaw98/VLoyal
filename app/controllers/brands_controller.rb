@@ -3,7 +3,6 @@ class BrandsController < ApplicationController
 
   def index
     @locations = Location.all
-    # @brand = Brand.find(params[:id])
     @brands = Brand.order(rating: :desc, name: :asc)
     @page_brands = true
 
@@ -71,7 +70,6 @@ class BrandsController < ApplicationController
         lng: location.longitude,
         info_window_html: render_to_string(partial: "info_window", locals: {location: location}),
         marker_html: render_to_string(partial: "marker")
-        # info_window_html: render_to_string(partial: "info_window", locals: { location: location})
       }
     end
   end
@@ -84,7 +82,6 @@ class BrandsController < ApplicationController
     if @card
       @card.stamps += 1
       if @card.stamps == @card.brand.card_styles[0].max_stamps
-        # add reward
         @reward = Reward.new(card_id: @card.id)
         @reward.save
         @reward.generate_qrcode
