@@ -5,7 +5,7 @@ export default class extends Controller {
   static targets = ['menu', 'item', 'items'];
   connect() {
     this.menu = [];
-  };
+  }
 
   newItem(e) {
     e.preventDefault();
@@ -20,7 +20,7 @@ export default class extends Controller {
       <input class='form-control m-1' type="text" name='price' data-action='change->menu#processItems'>
     </div>
   </div>`);
-  };
+  }
 
   processItems() {
     this.menu = [];
@@ -34,15 +34,15 @@ export default class extends Controller {
             return `${num}0`;
           } else {
             return `${num}.00`;
-          };
-        };
+          }
+        }
         this.menu.push(`{"name": "${inputs[0].value}", "price": "£${inputs[1].value}"}`);
-      };
+      }
     });
     this.updateMenu();
-  };
+  }
 
   updateMenu() {
     this.menuTarget.value = `[${this.menu.join(',')}]`;
-  };
-};
+  }
+}

@@ -6,19 +6,19 @@ export default class extends Controller {
   static targets = ["resultContainer", "alert", "card", "stamp"];
   static values = {
     user: Number
-  };
+  }
 
   connect() {
     this.locked = true;
     this.codeReader = new BrowserQRCodeReader();
     this.#refreshScanner();
-  };
+  }
 
   #refreshScanner() {
     this.codeReader
     .decodeFromInputVideoDevice(undefined, 'video')
     .then(result => this.#processResult(result));
-  };
+  }
 
   #processResult(result) {
     // process the result
@@ -63,7 +63,7 @@ export default class extends Controller {
     .catch(error => {
         console.error('Error:', error);
     });
-  };
+  }
 
   #rewardAnimation() {
     this.stampTargets.forEach((stamp, index) => {
@@ -71,7 +71,7 @@ export default class extends Controller {
         stamp.classList.add('reward');
       }, index * 200);
     });
-  };
+  }
 
     collapse() {
     if (!this.locked) {
@@ -84,6 +84,6 @@ export default class extends Controller {
           this.#refreshScanner();
         }, 300);
       }, 500);
-    };
-  };
-};
+    }
+  }
+}

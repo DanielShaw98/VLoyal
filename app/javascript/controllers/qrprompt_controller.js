@@ -6,7 +6,7 @@ export default class extends Controller {
   static targets = ["prompt", 'img', 'card'];
 
   connect() {
-  };
+  }
 
   showPrompt(e) {
     e.preventDefault();
@@ -14,14 +14,14 @@ export default class extends Controller {
     this.cardTargets.forEach(card => {
       if (card.contains(e.target)) {
         targetCard = card;
-      };
+      }
     });
     this.imgTarget.src = targetCard.dataset.src;
     this.promptTarget.classList.remove("d-none");
     setTimeout(() => {
       this.promptTarget.classList.add("show");
     }, 10);
-  };
+  }
 
   hidePrompt(e) {
     e.preventDefault(e);
@@ -29,5 +29,5 @@ export default class extends Controller {
     setTimeout(() => {
       this.promptTarget.classList.add("d-none");
     }, 300);
-  };
-};
+  }
+}

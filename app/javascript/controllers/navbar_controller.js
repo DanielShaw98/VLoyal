@@ -6,7 +6,7 @@ export default class extends Controller {
 
   connect() {
     this.open = false;
-  };
+  }
 
   toggleMenu() {
     if (this.open) {
@@ -19,7 +19,7 @@ export default class extends Controller {
       setTimeout(() => {
         this.menuTarget.classList.add('open');
       }, 10);
-    };
+    }
     this.open = !this.open;
-  };
-};
+  }
+}

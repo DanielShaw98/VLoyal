@@ -5,12 +5,12 @@ export default class extends Controller {
   static targets = ['location', 'list', "input", "form", 'loading', 'listCont'];
   static values = {
     location: Array
-  };
+  }
 
   connect() {
     this.locationSet = this.locationValue.length > 0;
     this.getLocation();
-  };
+  }
 
   getLocation() {
     if (this.locationSet) {
@@ -27,15 +27,15 @@ export default class extends Controller {
       );
     } else {
       this.showError({ message: "Geolocation is not supported by this browser." });
-    };
-  };
+    }
+  }
 
   showPosition(position) {
     const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
     const userLocation = {
       latitude: position.coords.latitude,
       longitude: position.coords.longitude
-    };
+    }
     fetch("/set_user_location", {
       method: "POST",
       headers: {
@@ -52,11 +52,11 @@ export default class extends Controller {
         this.listContTarget.classList.remove('hidden');
         this.listTarget.innerHTML = data;
       });
-  };
+  }
 
   showError(error) {
     this.element.innerHTML = `Error: ${error.message}`;
-  };
+  }
 
   search() {
     if (this.inputTarget.value !== '') {
@@ -75,6 +75,6 @@ export default class extends Controller {
         .then((data) => {
           this.listTarget.outerHTML = data;
         });
-    };
-  };
-};
+    }
+  }
+}

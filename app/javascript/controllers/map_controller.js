@@ -6,7 +6,7 @@ export default class extends Controller {
   static values = {
     apiKey: String,
     markers: Array
-  };
+  }
 
   connect() {
     mapboxgl.accessToken = this.apiKeyValue;
@@ -18,7 +18,7 @@ export default class extends Controller {
     setTimeout(() => {
       this.#fitMapToMarker();
     }, 100);
-  };
+  }
 
   #addMarkerToMap() {
     if (this.markersValue.length > 1) {
@@ -41,12 +41,12 @@ export default class extends Controller {
         .setPopup(popup)
         .addTo(this.map)
       marker.togglePopup();
-    };
-  };
+    }
+  }
 
   #fitMapToMarker() {
     const bounds = new mapboxgl.LngLatBounds();
     this.markersValue.forEach(marker => bounds.extend([marker.lng, marker.lat]));
     this.map.fitBounds(bounds, { padding: 124, maxZoom: 15, duration: 1500 });
-  };
-};
+  }
+}

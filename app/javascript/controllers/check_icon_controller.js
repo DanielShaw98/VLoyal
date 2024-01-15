@@ -28,6 +28,6 @@ export default class extends Controller {
       })
         .then((response) => console.log(response));
       this.element.href = "#";
-    };
-  };
-};
+    }
+  }
+}

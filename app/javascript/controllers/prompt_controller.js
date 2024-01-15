@@ -4,12 +4,12 @@ import { Controller } from "@hotwired/stimulus";
 export default class extends Controller {
   static values = {
     path: String
-  };
+  }
 
   static targets = ["prompt"];
 
   connect() {
-  };
+  }
 
   showPrompt(e) {
     e.preventDefault();
@@ -17,13 +17,13 @@ export default class extends Controller {
     setTimeout(() => {
       this.promptTarget.classList.add("show");
     }, 10);
-  };
+  }
 
   business() {
     window.location.href = this.pathValue + "?business=true";
-  };
+  }
 
   client() {
     window.location.href = this.pathValue;
-  };
-};
+  }
+}
