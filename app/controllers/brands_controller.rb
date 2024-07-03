@@ -81,19 +81,25 @@ class BrandsController < ApplicationController
 
     if @card
       @card.stamps += 1
+      # Increments the card's stamps by 1 for visual purposes
       if @card.stamps == @card.brand.card_styles[0].max_stamps
+        # Checks card's stamps are equal to the max_stamps for the brand
         @reward = Reward.new(card_id: @card.id)
         @reward.save
         @reward.generate_qrcode
+        # Reward is created and QR code is generated
         @card.stamps = 7
         @card_partial = render_to_string(partial: 'card', card: @card)
         @card.stamps = 0
+        # Card is temporarily set to 7 for visual purposes, then reset to 0
       else
         @card.stamps -= 1
         @card_partial = render_to_string(partial: 'card', card: @card)
         @card.stamps += 1
+        # Card is temporarily decremented by 1 for visual purposes, then incremented by 1
       end
       @card.save
+      # Card object is saved to persist the updated count
     end
 
     @alert = render_to_string(partial: 'alert', reward: @reward, card: @card)
@@ -101,6 +107,7 @@ class BrandsController < ApplicationController
     respond_to do |format|
       format.json
     end
+    # Returns the data as JSON
   end
 
   def user_brand(user)

@@ -21,16 +21,14 @@ export default class extends Controller {
   }
 
   #processResult(result) {
-    // process the result
     // Prepare a post request so it can be sent to the Rails controller
     // Create a new FormData object
     let formData = new FormData();
 
-    // // Prepare the data params
-    // Add the params to the FormData object, making sure to convert it to JSON
+    // Append the user id to the FormData object
     formData.append("user_id", this.userValue);
 
-    // Send the QR code data as JSON to the qr_codes#create action using fetch
+    // Send a PATCH request to the server with the QR code data
     fetch(result.text, {
       method: 'PATCH',
       'content-type': 'application/json',
@@ -50,7 +48,6 @@ export default class extends Controller {
             stampTarget.style.animationPlayState = 'running';
             setTimeout(() => {
               stampTarget.classList.add('stamped');
-              // check if it is last stamp
               let stampArray = Array.from(this.stampTargets).map(stamp => stamp.classList.toString());
               if (stampArray[stampArray.length - 1].includes("stamped")) {
                 this.#rewardAnimation();
